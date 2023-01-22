@@ -19,7 +19,7 @@
             $hash_pass = password_hash($staff_pass, PASSWORD_DEFAULT);
 
            
-            //$sql = 'SELECT * FROM firedept_staff where id =? and staff_name=?' ;
+            
             $sql = 'INSERT INTO firedept_staff SET staff_name = :staff_name,staff_pass = :staff_pass';
             $stmt = $db_host->prepare($sql);
             $stmt->bindValue(':staff_name', $staff_name, PDO::PARAM_STR);
@@ -34,11 +34,13 @@
             $stmt->execute();
             $result  =  $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if (password_verify($staff_pass, $result['staff_pass'])) {
+            if (password_verify($staff_pass, $hash_pass)) {
                 //ログイン成功の場合、セッションにログイン情報を格納
-                $_SESSION['staff_name'] = $staff_name;
-                $_SESSION['staff_id'] = $result['staff_id'];
-                header('Location: /home/ubuntu/public_html/taishobutu_app/taishobutu/taishobutu_index.php');
+                session_start();
+                $_SESSION['login'] = 1;
+                $_SESSION['id'] = $result['code'];
+                $_SESSION['name'] = $result['$staff_name'];
+                header('Location: ../taishobutu/taishobutu_index.php');
             } else {
                 //ログイン失敗の場合、エラーメッセージを表示し、ログイン画面に戻す
                 echo "ログインに失敗しました。入力された情報をご確認ください。";

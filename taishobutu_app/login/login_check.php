@@ -17,13 +17,14 @@
 
         
 
-        session_start();
+       
 
         
         $post = $_POST;
 
         $staff_name = $post['name'];
         $staff_pass = $post['pass'];
+        
 
         $hash_pass = password_hash($staff_pass,PASSWORD_DEFAULT);
 
@@ -33,18 +34,18 @@
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        var_dump($result);
+        
 
 
         if(!empty($result)) {
             if(password_verify($staff_pass,$hash_pass)) {
-                session_regenerate_id(true);
+                session_start();
                 $_SESSION['login'] = 1;
-                $_SESSION['id'] = $result['id'];
-                $_SESSION['name'] = $result['name'];
-
-                header('Location: /home/ubuntu/public_html/taishobutu_app/taishobutu/taishobutu_index.php');
-                exit;
+                $_SESSION['id'] = $result['code'];
+                $_SESSION['name'] = $result['staff_name'];
+                header('Location: ../taishobutu/taishobutu_index.php');
+                exit();
+                
             } else {
                 print 'ユーザー名、またはパスワードが違います。';
                 print '<input type="button" onclick="history.back()" value="戻る">';

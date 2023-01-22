@@ -90,7 +90,7 @@
           document.getElementById("display").innerHTML = displayTextValue;
         }
     </script>
-    <select id="selectbox" onchange="updateDisplay()">
+    <select id="selectbox"name="appendix" onchange="updateDisplay()">
       <option value="0">選択して下さい</option>
     <optgroup label="特定防火対象物">
         <option value="1">１項イ　</option>

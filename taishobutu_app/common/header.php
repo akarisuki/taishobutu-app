@@ -25,10 +25,23 @@
 </style>
 <header>
   <nav id="navbar">
-    <a href="/home/ubuntu/public_html/taishobutu_app/taishobutu/taishobutu_add.php">対象物追加</a> |
+    <a href="../taishobutu/taishobutu_add.php">対象物追加</a> |
     <a href="#about">About</a> |
     <a href="#services">Services</a> |
     <a href="#contact">Contact</a>
+    <?php
+      session_start();
+      session_regenerate_id(true);
+      if(isset($_SESSION['login'])===false){
+          print'ログインされていません。<br />';
+          print'<a href="../login/login.php">ログイン画面へ</a>';
+          exit();
+      } else {
+          print $_SESSION['name'];
+          print 'さんログイン中<br />';
+          print '<br />';
+      }
+    ?>
     <span id="login-status"></span>
   </nav>
 </header>
