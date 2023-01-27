@@ -6,6 +6,9 @@
           content="width=device-width,user-scalable, initial-scale=1.0,
           maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet"type="text/css" href="../sass/taishobutu.css">
+
+
     <title>防火対象物管理アプリ</title>
 </head>
 <body>
@@ -26,7 +29,7 @@
 <header>
   <nav id="navbar">
     <a href="../taishobutu/taishobutu_add.php">対象物追加</a> |
-    <a href="#about">About</a> |
+    <a href="../taishobutu/taishobutu_index.php">対象物一覧</a> |
     <a href="#services">Services</a> |
     <a href="#contact">Contact</a>
     <?php

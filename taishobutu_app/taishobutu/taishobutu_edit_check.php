@@ -15,6 +15,10 @@ $error = [];
 
 $post = $_POST;
 
+
+
+$code = (int)$post['code'];
+
 $appendix = (int)$post['appendix'];
 
 $taishobutu_name = $post['taishobutu_name'];
@@ -28,6 +32,8 @@ $concern_name = $post['concern_name'];
 $concern_tel = $post['concern_tel'];
 
 $total_area = (double)$post['total_area'];
+
+
 
 if(!preg_match('/^[0-9-]*$/',$taishobutu_tel)){
   $error[] = '対象物連絡先は半角数字に-を含むようにしてください';
@@ -57,7 +63,7 @@ if(count($error) > 0){
   print '<input type="button" onclick="history.back()" value="戻る">';
   print '<form>';
 } else {
-  //非番の日に実装する。
+  print '番号:'.$code.'<br/>';
   print '用途区分:'.$appendix_array[$appendix].'<br>';
   print '対象物名:'.$taishobutu_name.'<br>';
   print '対象物所在地:'.$taishobutu_address.'<br>';
@@ -65,7 +71,8 @@ if(count($error) > 0){
   print '関係者名:'.$concern_name.'<br>';
   print '関係者連絡先:'.$concern_tel.'<br>';          
   print '延べ面積:'.$total_area.'<br>';
-  print '<form method="post" action="taishobutu_done.php">';
+  print '<form method="post" action="taishobutu_edit_done.php">';
+  print '<input type="hidden" name="code" value="'.$code.'">';
   print'<input type="hidden" name="appendix" value="'.$appendix.'">';
   print'<input type="hidden" name="taishobutu_name" value="'.$taishobutu_name.'">';
   print'<input type="hidden" name="taishobutu_address" value="' .$taishobutu_address.'">';
@@ -73,7 +80,7 @@ if(count($error) > 0){
   print'<input type="hidden" name="concern_name" value="' .$concern_name.'">';
   print'<input type="hidden" name="concern_tel" value="' .$concern_tel.'">';
   print'<input type="hidden" name="total_area" value="' .$total_area.'">';
-  print'登録してもよろしいですか？';
+  print'修正してもよろしいですか？';
   print'<input type="submit" value="OK">';
   print'<input type="button" onclick="history.back()"value="戻る">';
   print'</form>';

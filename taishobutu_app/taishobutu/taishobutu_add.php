@@ -17,13 +17,13 @@ require_once '/home/ubuntu/public_html/taishobutu_app/common/header.php';
         <input type="text" name="taishobutu_name">
         <label for="taishobutu_address">対象物所在地</label>
         <input type="text" name="taishobutu_address">
-        <label for="taihobutu_tel">電話番号</label>
+        <label for="taihobutu_tel">対象物連絡先</label>
         <input type="text" name="taishobutu_tel">
         <label for="concern_name">関係者名</label>
         <input type="text" name="concern_name">
-        <th><label for="concern_tel">関係者連絡先</label></th>
+       <th><label for="concern_tel">関係者連絡先</label></th>
         <td><input type="text" name="concern_tel"></td>
-        <th><label>延べ面積</label></th>
+       <th><label>延べ面積</label></th>
         <td><input type="text" name="total_area">㎡</td>       
         
     </table>
